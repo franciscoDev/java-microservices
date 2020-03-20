@@ -1,4 +1,4 @@
-package com.franc.microservicios.examenes.models.entity;
+package com.franc.microservicios.commons.examenes.models.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,7 +77,7 @@ public class Examen {
 
 	public void setPreguntas(List<Pregunta> preguntas) {
 		this.preguntas.clear();
-		this.preguntas.forEach(p->this.addPregunta(p));
+		preguntas.forEach(p->this.addPregunta(p));
 	}
 	
 	public void addPregunta(Pregunta pregunta) {

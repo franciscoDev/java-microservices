@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.franc.microservicios.commons.controllers.CommonController;
-import com.franc.microservicios.examenes.models.entity.Examen;
-import com.franc.microservicios.examenes.models.entity.Pregunta;
+import com.franc.microservicios.commons.examenes.models.entity.Examen;
+import com.franc.microservicios.commons.examenes.models.entity.Pregunta;
 import com.franc.microservicios.examenes.services.ExamenService;
 
 @RestController
