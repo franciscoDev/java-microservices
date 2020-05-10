@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import com.franc.microservicios.commons.alumnos.models.entity.Alumno;
 import com.franc.microservicios.commons.examenes.models.entity.Examen;
@@ -26,6 +27,7 @@ public class Curso {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty
 	private String nombre;
 	
 	@Column(name="create_at")

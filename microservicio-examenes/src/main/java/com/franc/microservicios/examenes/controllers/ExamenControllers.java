@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,7 +24,13 @@ import com.franc.microservicios.examenes.services.ExamenService;
 public class ExamenControllers extends CommonController<Examen, ExamenService> {
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> editar (@RequestBody Examen examen,@PathVariable Long id){
+	public ResponseEntity<?> editar (@Valid @RequestBody Examen examen
+									,BindingResult result
+									,@PathVariable Long id
+									){
+		
+		if( result.hasErrors())return this.validar(result);
+		
 		Optional<Examen> optional = service.findById(id);
 		if(! optional.isPresent()) return ResponseEntity.notFound().build();
 		
@@ -48,6 +57,12 @@ public class ExamenControllers extends CommonController<Examen, ExamenService> {
 	public ResponseEntity<?> filtrar(@PathVariable String term){
 		
 		return ResponseEntity.ok(service.findByNombre(term));
+	}
+	
+	@GetMapping("/asignaturas}")
+	public ResponseEntity<?> getAsignaturas(@PathVariable String term){
+		
+		return ResponseEntity.ok(service.findAllAsignaturas());
 	}
 	
 }
